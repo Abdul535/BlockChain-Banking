@@ -51,7 +51,7 @@ class Blockchain:
 				# print("Hello i am ")
 				print(block)
 				# print("Hello i am 222 ")
-				return block.blockName,block.data,str(block.hash()),str(block.previous_hash),str(block.timestamp)
+				return block.blockName,block.data,str(block.hash()),str(block.previous_hash)
 			else:
 				block.nonce += 1
 	
@@ -69,8 +69,8 @@ def my_form_post():
 	PayeeName = request.form['PayeeName']
 	AmountTransfer = request.form['AmountTransfer']
 	
-	nm, tx, bh, ph, ts = blockchain.mine(Block(PayeeName, AmountTransfer))
-	my_dict.append([nm,tx,bh,ph,ts])
+	nm, tx, bh, ph = blockchain.mine(Block(PayeeName, AmountTransfer))
+	my_dict.append([nm,tx,bh,ph])
 	return render_template('index.html', name_list = my_dict)
 
 if __name__=="__main__":
